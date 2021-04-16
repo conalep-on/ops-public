@@ -2745,6 +2745,7 @@ spec:
         - argocd-server
         - --staticassets
         - /shared/app
+        - --insecure
         image: quay.io/argoproj/argocd:v2.0.0
         imagePullPolicy: Always
         livenessProbe:
