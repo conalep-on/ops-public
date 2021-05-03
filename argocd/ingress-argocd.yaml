@@ -1,11 +1,26 @@
 apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: argocd-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - argocd.ops.conalep.mx
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+---
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: argocd-vservice
   namespace: argocd
 spec:
   gateways:
-  - istio-system/istio-gateway
+  - argocd-gateway
   hosts:
   - argocd.ops.conalep.mx
   http:
