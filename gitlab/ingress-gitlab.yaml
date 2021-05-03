@@ -15,11 +15,13 @@ spec:
     route:
     - destination:
         host: gitlab-webservice-default
-        port: 8181
+        port:
+          number: 8181
   - match:
     - uri:
         prefix: /admin/sidekiq/
     route:
     - destination:
         host: gitlab-webservice-default
-        port: 8080
+        port:
+          number: 8080
