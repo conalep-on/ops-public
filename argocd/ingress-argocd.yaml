@@ -1,3 +1,17 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: argocd-cert
+  namespace: istio-system
+spec:
+  secretName: argocd-cert
+  commonName: argocd.ops.conalep.mx
+  dnsNames:
+  - argocd.ops.conalep.mx
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -12,6 +26,17 @@ spec:
       name: http
       number: 80
       protocol: HTTP
+    tls:
+      httpsRedirect: true # sends 301 redirect for http requests
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: argocd-cert # This should match the Certificate secretName
+    hosts:
+    - argocd.ops.conalep.mx # This should match a DNS name in the Certificate
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
