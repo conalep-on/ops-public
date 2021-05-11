@@ -8,7 +8,7 @@ spec:
   ports:
   - name: http
     port: 4180
-    targetPort: 4180
+    targetPort: http
   selector:
     app: longhorn-proxy
   type: ClusterIP
@@ -55,6 +55,3 @@ spec:
           value: "1234567890098765"
         - name: OAUTH2_PROXY_UPSTREAMS
           value: "http://longhorn-frontend.longhorn-system.svc.cluster.local"
-        ports:
-        - name: http
-          containerPort: 4180
