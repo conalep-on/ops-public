@@ -51,3 +51,5 @@ spec:
           value: "1234567890098765"
         - name: OAUTH2_PROXY_UPSTREAMS
           value: "http://longhorn-frontend:80"
+        - name: OAUTH2_PROXY_HTTP_ADDRESS
+          value: "0.0.0.0:8080"
