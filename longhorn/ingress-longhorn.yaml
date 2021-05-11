@@ -40,4 +40,4 @@ spec:
         prefix: /
     route:
     - destination:
-        host: longhorn-frontend
+        host: longhorn-proxy
