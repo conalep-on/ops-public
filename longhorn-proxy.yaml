@@ -3,22 +3,22 @@ kind: Service
 metadata:
   name: longhorn-proxy
   labels:
-    app: longhorn
+    app: longhorn-proxy
 spec:
   ports:
   - name: http
     port: 4180
     targetPort: 4180
   selector:
-    app: longhorn
+    app: longhorn-proxy
   type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: keycloak
+  name: longhorn-proxy
   labels:
-    app: keycloak
+    app: longhorn-proxy
 spec:
   replicas: 1
   selector:
@@ -54,50 +54,7 @@ spec:
         - name: OAUTH2_PROXY_COOKIE_SECRET
           value: "1234567890098765"
         - name: OAUTH2_PROXY_COOKIE_UPSTREAM
-          value: "http://longhorn"
+          value: "http://longhorn-frontend"
       ports:
         - name: http
           containerPort: 4180
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: keycloak-gateway
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - hosts:
-    - login.ops.conalep.mx
-    port:
-      name: http
-      number: 80
-      protocol: HTTP
-    tls:
-      httpsRedirect: true # sends 301 redirect for http requests
-  - port:
-      number: 443
-      name: https
-      protocol: HTTPS
-    tls:
-      mode: SIMPLE
-      credentialName: login-cert # This should match the Certificate secretName
-    hosts:
-    - login.ops.conalep.mx # This should match a DNS name in the Certificate
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: login-vservice
-spec:
-  gateways:
-  - keycloak-gateway
-  hosts:
-  - login.ops.conalep.mx
-  http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        host: keycloak
