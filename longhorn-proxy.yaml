@@ -53,7 +53,7 @@ spec:
           value: "false"
         - name: OAUTH2_PROXY_COOKIE_SECRET
           value: "1234567890098765"
-        - name: OAUTH2_PROXY_COOKIE_UPSTREAM
+        - name: OAUTH2_PROXY_COOKIE_UPSTREAMS
           value: "http://longhorn-frontend"
         ports:
         - name: http
