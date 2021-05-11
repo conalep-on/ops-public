@@ -81,7 +81,7 @@ metadata:
   name: login-vservice
 spec:
   gateways:
-  - login-gateway
+  - keycloak-gateway
   hosts:
   - login.ops.conalep.mx
   http:
