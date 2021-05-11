@@ -6,7 +6,7 @@ metadata:
     app: longhorn-proxy
 spec:
   ports:
-  - name: TCP
+    - protocol: TCP
     port: 4180
   selector:
     app: longhorn-proxy
