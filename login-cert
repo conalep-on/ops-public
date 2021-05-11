@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: login-cert
+  namespace: istio-system
+spec:
+  secretName: login-cert
+  commonName: login.ops.conalep.mx
+  dnsNames:
+  - login.ops.conalep.mx
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
