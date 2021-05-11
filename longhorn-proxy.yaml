@@ -5,9 +5,6 @@ metadata:
   labels:
     app: longhorn-proxy
 spec:
-  ports:
-    - protocol: TCP
-      port: 4180
   selector:
     app: longhorn-proxy
   type: ClusterIP
