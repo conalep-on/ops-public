@@ -8,7 +8,6 @@ spec:
   ports:
   - name: http
     port: 4180
-    targetPort: http
   selector:
     app: longhorn-proxy
   type: ClusterIP
