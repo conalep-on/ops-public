@@ -48,3 +48,46 @@ spec:
           httpGet:
             path: /auth/realms/master
             port: 8080
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: keycloak-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - login.ops.conalep.mx
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true # sends 301 redirect for http requests
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: login-cert # This should match the Certificate secretName
+    hosts:
+    - login.ops.conalep.mx # This should match a DNS name in the Certificate
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: login-vservice
+spec:
+  gateways:
+  - login-gateway
+  hosts:
+  - login.ops.conalep.mx
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: keycloak
