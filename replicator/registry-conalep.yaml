@@ -4,7 +4,6 @@ data:
 kind: Secret
 metadata:
   name: registry-conalep
-  namespace: argocd
   annotations:
     replicator.v1.mittwald.de/replicate-to: "*"
 type: kubernetes.io/dockerconfigjson
