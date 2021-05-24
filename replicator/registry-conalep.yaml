@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJyZWcub3BzLmNvbmFsZXAubXgiOnsidXNlcm5hbWUiOiJvcHMiLCJwYXNzd29yZCI6IkMwbjRsM3BpbWdzIiwiYXV0aCI6ImIzQnpPa013YmpSc00zQnBiV2R6In19fQ==
+kind: Secret
+metadata:
+  name: registry-conalep
+  namespace: argocd
+  annotations:
+    replicator.v1.mittwald.de/replicate-to: "*"
+type: kubernetes.io/dockerconfigjson
