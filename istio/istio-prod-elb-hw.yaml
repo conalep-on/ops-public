@@ -4520,7 +4520,7 @@ data:
     defaultConfig:
       discoveryAddress: istiod.istio-system.svc:15012
       envoyAccessLogService:
-        address: skywalking-oap.istio-system:11800
+        address: skywalking-prod-oap.istio-system:11800
       proxyMetadata: {}
       tracing:
         zipkin:
