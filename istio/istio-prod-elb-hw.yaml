@@ -4563,7 +4563,7 @@ data:
         },
         "enabled": true,
         "externalIstiod": false,
-        "hub": "docker.io/istio",
+        "hub": "gcr.io/istio-release",
         "imagePullPolicy": "",
         "imagePullSecrets": [],
         "istioNamespace": "istio-system",
