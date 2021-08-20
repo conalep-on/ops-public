@@ -40,7 +40,7 @@ spec:
         - name: OAUTH2_PROXY_CLIENT_SECRET
           value: "3033b113-d108-4b12-b29b-79245cfb30f3"
         - name: OAUTH2_PROXY_OIDC_ISSUER_URL
-          value: "https://login.ops.conalep.mx/auth/realms/conalep"
+          value: "https://login.ops.conalep.mx/auth/realms/master"
         - name: OAUTH2_PROXY_INSECURE_OIDC_ALLOW_UNVERIFIED_EMAIL
           value: "true"
         - name: OAUTH2_PROXY_REDIRECT_URL
