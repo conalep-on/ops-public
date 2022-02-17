@@ -10,10 +10,11 @@ spec:
     #  https://gitlab.com/gitlab-org/cloud-native/gitlab-operator/-/blob/<Operator Version>/CHART_VERSIONS
     version: "5.7.1" 
     values:
-      nginx-ingress.enabled: false
+      nginx-ingress:
+        enabled: false
       global:
         hosts:
-          domain: dev.conalep.mx # Provide a real base domain for GitLab. "gitlab." and "registry." will be exposed as subdomains.
+          domain: dev.conalep.mx
           https: false
         ingress:
           enabled: false
@@ -21,5 +22,7 @@ spec:
           provider: istio
           configureCertmanager: false
           tls.enabled: false
-      certmanager.install: false
-      gitlab-runner.install: false
+      certmanager:
+        install: false
+      gitlab-runner:
+        install: false
