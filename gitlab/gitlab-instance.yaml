@@ -21,7 +21,8 @@ spec:
           class: istio
           provider: istio
           configureCertmanager: false
-          tls.enabled: false
+          tls:
+            enabled: false
       certmanager:
         install: false
       gitlab-runner:
