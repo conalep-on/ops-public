@@ -1,0 +1,24 @@
+apiVersion: apps.gitlab.com/v1beta1
+kind: GitLab
+metadata:
+  name: gitlab-dev-conalep
+spec:
+  chart:
+    # Provided <Operator Version> is the released version from 
+    #  https://gitlab.com/gitlab-org/cloud-native/gitlab-operator/-/releases
+    # obtain list of available chart versions from:
+    #  https://gitlab.com/gitlab-org/cloud-native/gitlab-operator/-/blob/<Operator Version>/CHART_VERSIONS
+    version: "5.7.1" 
+    values:
+      global:
+        hosts:
+          domain: dev.conalep.mx # Provide a real base domain for GitLab. "gitlab." and "registry." will be exposed as subdomains.
+          https: false
+        ingress:
+          enabled: false
+          class: istio
+          provider: istio
+          configureCertmanager: false
+          tls.enabled: false     
+      certmanager-issuer:
+        email: centro_datos@conalep.edu.mx # use your real email address here
