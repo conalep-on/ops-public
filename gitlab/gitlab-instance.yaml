@@ -6,7 +6,6 @@ spec:
   chart:
     # Provided <Operator Version> is the released version from 
     #  https://gitlab.com/gitlab-org/cloud-native/gitlab-operator/-/releases
-    # obtain list of available chart versions from:
     #  https://gitlab.com/gitlab-org/cloud-native/gitlab-operator/-/blob/<Operator Version>/CHART_VERSIONS
     version: 5.6.4
     values:
