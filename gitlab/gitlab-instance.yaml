@@ -10,6 +10,7 @@ spec:
     #  https://gitlab.com/gitlab-org/cloud-native/gitlab-operator/-/blob/<Operator Version>/CHART_VERSIONS
     version: "5.7.1" 
     values:
+      nginx-ingress.enabled: false
       global:
         hosts:
           domain: dev.conalep.mx # Provide a real base domain for GitLab. "gitlab." and "registry." will be exposed as subdomains.
@@ -19,6 +20,6 @@ spec:
           class: istio
           provider: istio
           configureCertmanager: false
-          tls.enabled: false     
-      certmanager-issuer:
-        email: centro_datos@conalep.edu.mx # use your real email address here
+          tls.enabled: false
+      certmanager.install: false
+      gitlab-runner.install: false
