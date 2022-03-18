@@ -1,4 +1,19 @@
 service:
+  # Type of service. Set to "None" to disable the service entirely
+  type: LoadBalancer
+  ports:
+  - name: status-port
+    port: 15021
+    protocol: TCP
+    targetPort: 15021
+  - name: http2
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 443
   annotations:
     kubernetes.io/elb.class: union
     kubernetes.io/session-affinity-mode: SOURCE_IP
