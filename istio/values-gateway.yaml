@@ -1,6 +1,6 @@
 service:
   annotations:
-   kubernetes.io/elb.class: union
-   kubernetes.io/session-affinity-mode: SOURCE_IP
-   kubernetes.io/elb.subnet-id: de6feb94-31e8-4721-be6c-e8dbcb320ba4
-   kubernetes.io/elb.autocreate: "{\"type\":\"public\",\"bandwidth_name\":\"cce-bandwidth-20\",\"bandwidth_chargemode\":\"traffic\",\"bandwidth_size\":20,\"bandwidth_sharetype\":\"PER\",\"eip_type\":\"5_bgp\",\"name\":\"cce-opsv2\"}"
+    kubernetes.io/elb.class: union
+    kubernetes.io/session-affinity-mode: SOURCE_IP
+    kubernetes.io/elb.subnet-id: de6feb94-31e8-4721-be6c-e8dbcb320ba4
+    kubernetes.io/elb.autocreate: "{\"type\":\"public\",\"bandwidth_name\":\"cce-bandwidth-20\",\"bandwidth_chargemode\":\"traffic\",\"bandwidth_size\":20,\"bandwidth_sharetype\":\"PER\",\"eip_type\":\"5_bgp\",\"name\":\"cce-opsv2\"}"
