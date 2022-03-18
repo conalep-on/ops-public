@@ -4,7 +4,6 @@ podAnnotations:
   prometheus.io/path: "/stats/prometheus"
   inject.istio.io/templates: "gateway"
   sidecar.istio.io/inject: "true"
-  #nano istio-helm/charts/gateways/istio-ingress/templates/service.yaml
   kubernetes.io/elb.class: union
   kubernetes.io/session-affinity-mode: SOURCE_IP
   kubernetes.io/elb.subnet-id: de6feb94-31e8-4721-be6c-e8dbcb320ba4
