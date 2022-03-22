@@ -14,11 +14,11 @@ spec:
         prefix: /admin/sidekiq
     route:
     - destination:
-        host: gitlab-unicorn.gitlab.svc.cluster.local
+        host: https://kubernetes.default.svc
         port:
           number: 8080
   - route:
     - destination:
-        host: gitlab-unicorn.gitlab.svc.cluster.local
+        host: https://kubernetes.default.svc
         port:
           number: 8181
