@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: gitlab-http-virtual-service
+  namespace: gitlab
+spec:
+  hosts:
+  - gitlab.dev.conalep.mx
+  gateways:
+  - gitlab-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /admin/sidekiq
+    route:
+    - destination:
+        host: gitlab-unicorn.gitlab.svc.cluster.local
+        port:
+          number: 8080
+  - route:
+    - destination:
+        host: gitlab-unicorn.gitlab.svc.cluster.local
+        port:
+          number: 8181
