@@ -1,0 +1,36 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gitlab-gateway
+  namespace: gitlab
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 22
+      name: ssh-gitlab
+      protocol: TCP
+    hosts:
+    - gitlab.dev.conalep.mx
+  - port:
+      number: 80
+      name: http-gitlab
+      protocol: HTTP
+    hosts:
+    - gitlab.dev.conalep.mx
+    #- minio.${MY_DOMAIN}
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https-gitlab
+      protocol: HTTPS
+    hosts:
+    - gitlab.dev.conalep.mx
+    #- minio.${MY_DOMAIN}
+    tls:
+      credentialName: ingress-cert-${LETSENCRYPT_ENVIRONMENT}
+      mode: SIMPLE
+      privateKey: sds
+      serverCertificate: sds
