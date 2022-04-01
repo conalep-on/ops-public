@@ -9,6 +9,7 @@ data:
   JCLOUDS_IDENTITY: "QRIG7ZEINVECKJKB7PJI"
   JCLOUDS_CREDENTIAL: "gi0Ngrp7e2OL5PBukFeFAbY1fwZ0ZXOQnuTeCdAK"
   JCLOUDS_ENDPOINT: "obs.na-mexico-1.myhuaweicloud.com"
+
 ---
 apiVersion: apps/v1
 kind: Deployment
