@@ -9556,6 +9556,11 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
+data:
+  accounts.ops: login
+  accounts.dev: login
+  accounts.jgonzalez: login
+  accounts.riniesta: login
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -9586,6 +9591,15 @@ metadata:
     app.kubernetes.io/name: argocd-rbac-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-rbac-cm
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    p, role:dev, applications, *, default/*, allow
+    p, role:ops, applications, *, */*, allow
+    g, dev, role:dev
+    g, ops, role:ops
+    g, riniesta, role:admin
+    g, jgonzalez, role:admin
 ---
 apiVersion: v1
 data:
